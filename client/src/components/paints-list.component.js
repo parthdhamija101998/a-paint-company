@@ -11,7 +11,6 @@ import {
   DialogContent,
   DialogActions,
   TextField,
-  IconButton,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
 import { getPaints, updatePaintQuantity, updatePaintStatus } from "../service/api";

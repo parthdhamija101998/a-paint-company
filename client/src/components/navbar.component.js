@@ -4,17 +4,6 @@ import { NavLink, Link } from "react-router-dom";
 import React, { useContext } from "react";
 import { AuthContext } from "./authContext";
 
-const Header = styled(AppBar)`
-  background-color: #111111;
-`;
-
-const Tabs = styled(NavLink)`
-  font-size: 25px;
-  margin-right: 20px;
-  color: inherit;
-  text-decoration: none;
-`;
-
 const Navbar = () => {
   const { isLoggedIn, logout } = useContext(AuthContext);
 

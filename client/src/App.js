@@ -5,7 +5,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { AuthContext, AuthProvider } from "./components/authContext";
+import { AuthProvider } from "./components/authContext";
 
 import Navbar from "./components/navbar.component";
 import PaintsList from "./components/paints-list.component";
@@ -28,18 +28,5 @@ function App() {
   );
 }
 
-// Higher-order component to protect private routes
-function PrivateRoute({ component: Component, ...rest }) {
-  const { isLoggedIn } = React.useContext(AuthContext);
-
-  return (
-    <Routes>
-      <Route
-        {...rest}
-        element={isLoggedIn ? <Component /> : <Navigate to="/all" />}
-      />
-    </Routes>
-  );
-}
 
 export default App;
