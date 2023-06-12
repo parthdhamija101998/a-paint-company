@@ -13,6 +13,7 @@ router.get("/", async (req, res) => {
   }
 });
 
+// Route to Login
 router.post("/login", async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -27,18 +28,6 @@ router.post("/login", async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: 'Failed to check login' });
-  }
-});
-
-// Route to add a new user
-router.post("/add", async (req, res) => {
-  try {
-    const { username, password, role } = req.body;
-    const newUser = new User({ username, password, role });
-    await User.insertMany(newUser);
-    res.json({ message: "User added successfully" });
-  } catch (error) {
-    res.status(400).json({ message: error.message });
   }
 });
 
