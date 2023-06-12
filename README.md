@@ -12,6 +12,24 @@ This is a ReadMe file for the Paint Company Stock Status web application, which 
 
 4. Running Low Alert: Painters can mark a specific paint as "running low" if they notice that the quantity is decreasing. This allows the managers and admins to be aware of paints that need attention and take necessary actions to replenish the stock.
 
+## Deployment and Access - 
+
+The frontend of the project has been deployed using Netlify - https://taupe-rabanadas-d608da.netlify.app/login
+The backend of the project has been deployed using Heroku - https://a-paint-company-is18.herokuapp.com/paints
+
+Please find the table below for checking the functionality of the app you would be requiring these Login Credentials -
+1. Jane (Admin)
+* Username : Jane
+* Password : jane
+
+2. John (Manager)
+* Username : John
+* Password : john
+
+1. Painter1 (Painter)
+* Username : painter1
+* Password : parth
+
 ## User Roles and Permissions
 1. Manager:
 View paint availability.
@@ -26,31 +44,6 @@ Move paint cards between swim lanes.
 View paint availability.
 Update and edit the amount of paint used.
 Mark a paint as "running low".
-
-## Installation and Setup
-1. Clone the repository from the provided cloud source control repository link.
-
-2. Install the necessary dependencies for both the frontend and backend:
-
-* Navigate to the root directory of the project.
-* Run npm install to install backend dependencies.
-* Navigate to the client directory.
-* Run npm install to install frontend dependencies.
-
-3. Configure the environment variables:
-
-* Create a .env file in the root directory.
-* Provide the necessary environment variables such as database connection URL, server port, etc. Refer to the .env.example file for the required variables.
-
-4. Start the application:
-
-* In the root directory, run npm start to start the backend server.
-* Navigate to the client directory.
-* Run npm start to start the frontend development server.
-
-5. Access the application:
-
-* Open a web browser and visit http://localhost:3000 to access the application.
 
 ## Screenshots
 Please find below the screenshots of the Web Application:
