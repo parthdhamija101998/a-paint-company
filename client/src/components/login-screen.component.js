@@ -1,4 +1,4 @@
-import { useState,useContext  } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import { Button, Grid, Paper, TextField, Typography } from "@mui/material";
 import { AuthContext } from "./authContext";
@@ -14,14 +14,15 @@ function LoginScreen() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const response = await checkLogin(username, password);
-    
+
     if (!response.error) {
-        login();
-        navigate("/all", { state: { response } });
+      localStorage.setItem("user", JSON.stringify(response));
+      login();
+      navigate("/all", { state: { response } });
     } else {
-        setErrorMessage("Invalid username or password. Please try again.");
-      }
-  }; 
+      setErrorMessage("Invalid username or password. Please try again.");
+    }
+  };
 
   return (
     <Grid container justifyContent="center" alignItems="center" height="100vh">
@@ -52,7 +53,11 @@ function LoginScreen() {
               Login
             </Button>
           </form>
-          {errorMessage && <Typography variant="body1" color="error">{errorMessage}</Typography>}
+          {errorMessage && (
+            <Typography variant="body1" color="error">
+              {errorMessage}
+            </Typography>
+          )}
         </Paper>
       </Grid>
     </Grid>

@@ -21,26 +21,20 @@ export const checkLogin = async (username, password) => {
   }
 };
 
-// export const editProduct = async (product, productId) => {
-//   try {
-//     return await axios.put(`${URL}/edit/product/${productId}`, product);
-//   } catch (error) {
-//     console.log("Error while calling edit user API ", error);
-//   }
-// };
+export const editPaint = async (paint, _id) => {
+  try {
+    const response = await axios.put(`${URL}/paints/update/${_id}`, { updatedPaint: paint });
+    return response.data;
+  } catch (error) {
+    console.log("Error ", error);
+  }
+};
 
-// export const getProduct = async (productId) => {
-//   try {
-//     return await axios.get(`${URL}/product/${productId}`);
-//   } catch (error) {
-//     console.log("Error while getting the product with product ID ", error);
-//   }
-// };
 
-// export const deleteProduct = async (productId) => {
-//   try {
-//     return await axios.delete(`${URL}/delete/product/${productId}`);
-//   } catch (error) {
-//     console.log("Error while deleting the product api ", error);
-//   }
-// };
+export const getPaint = async (_id) => {
+  try {
+    return await axios.get(`${URL}/paints/${_id}`);
+  } catch (error) {
+    console.log("Error while getting the Paint with ID ", error);
+  }
+};

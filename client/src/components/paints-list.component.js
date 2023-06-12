@@ -1,6 +1,4 @@
-import React from "react";
-import { useEffect, useState } from "react";
-
+import React, { useEffect, useState } from "react";
 import {
   Card,
   CardContent,
@@ -9,7 +7,6 @@ import {
   Grid,
   Button,
 } from "@mui/material";
-
 import { Link, useLocation } from "react-router-dom";
 import { getPaints } from "../service/api";
 
@@ -17,13 +14,16 @@ const PaintsList = () => {
   const location = useLocation();
   const { response } = location.state || {};
   const [paints, setPaints] = useState([]);
-  const [user, setUser] = useState([]);
   const [userRole, setUserRole] = useState("");
 
   useEffect(() => {
+    const storedUser = localStorage.getItem("user");
     if (response) {
-      setUser(response);
+      localStorage.setItem("user", JSON.stringify(response));
       setUserRole(response.role);
+    } else if (storedUser) {
+      const parsedUser = JSON.parse(storedUser);
+      setUserRole(parsedUser.role);
     }
     getAllPaints();
   }, []);
@@ -51,6 +51,10 @@ const PaintsList = () => {
 
   return (
     <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
+      <Typography variant="h5" style={{ margin: "20px" }}>
+        Hey {userRole}
+      </Typography>
+      <br />
       <Grid
         container
         spacing={2}
@@ -98,31 +102,28 @@ const PaintsList = () => {
                   >
                     <CardContent>
                       <Typography variant="h6" component="div">
-                        Color: {paint.color}
+                        {paint.color}
                       </Typography>
                       <Typography variant="body1">
                         Quantity: {paint.quantity}
                       </Typography>
-                      {userRole === "Admin" || userRole === "Painter" ? (
-                        <Typography variant="body1">
-                          Last Modified By: {paint.lastModifiedBy}
-                        </Typography>
-                      ) : null}
                     </CardContent>
                     {userRole === "Admin" || userRole === "Painter" ? (
                       <CardActions>
                         <Button
                           size="small"
                           component={Link}
-                          to={`/edit/${paint._id}`}
+                          to={`/update/${paint._id}`}
                         >
                           Update
                         </Button>
-                        {userRole === "Painter" && paint.status !== "Out of Stock" && paint.status !== "Running Low" ? (
+                        {userRole === "Painter" &&
+                        paint.status !== "Out of Stock" &&
+                        paint.status !== "Running Low" ? (
                           <Button
                             size="small"
                             component={Link}
-                            to={`/edit/${paint._id}`}
+                            to={`/update/${paint._id}`}
                           >
                             RUNNING LOW
                           </Button>

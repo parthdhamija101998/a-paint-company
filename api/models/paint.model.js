@@ -15,15 +15,7 @@ const paintSchema = new Schema(
     quantity: {
       type: Number,
       required: true,
-    },
-    createdBy: {
-      type: String,
-      required: true,
-    },
-    lastModifiedBy: {
-      type: String,
-      required: true,
-    },
+    }
   },
   {
     timestamps: true,

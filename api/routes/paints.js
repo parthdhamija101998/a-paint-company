@@ -13,24 +13,6 @@ router.get("/", async (req, res) => {
   }
 });
 
-// Route to add a new paint
-// router.post("/add", async (req, res) => {
-//   try {
-//     const { color, status, quantity, createdBy, lastModifiedBy } = req.body;
-//     const newPaint = new Paint({
-//       color,
-//       status,
-//       quantity,
-//       createdBy,
-//       lastModifiedBy,
-//     });
-//     await newPaint.save();
-//     res.json({ message: "Paint added successfully" });
-//   } catch (error) {
-//     res.status(400).json({ error: "Failed to add paint" });
-//   }
-// });
-
 // Route to get a paint by ID
 router.get("/:id", async (req, res) => {
   try {
@@ -47,18 +29,17 @@ router.get("/:id", async (req, res) => {
 // Route to update a paint by ID
 router.put("/update/:id", async (req, res) => {
   try {
-    const { color, status, quantity, createdBy, lastModifiedBy } = req.body;
+    const { updatedPaint } = req.body;
+    console.log(updatedPaint);
     const paint = await Paint.findById(req.params.id);
-
+    
     if (!paint) {
       return res.status(400).json({ error: "Paint not found" });
     }
 
-    paint.color = color;
-    paint.status = status;
-    paint.quantity = quantity;
-    paint.createdBy = createdBy;
-    paint.lastModifiedBy = lastModifiedBy;
+    paint.color = updatedPaint.color;
+    paint.status = updatedPaint.status;
+    paint.quantity = updatedPaint.quantity;
 
     await paint.save();
     res.json({ message: "Paint updated successfully" });

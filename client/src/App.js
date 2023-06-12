@@ -21,7 +21,7 @@ function App() {
           <Route path="/" element={<Navigate to="/login" />} />
           <Route path="/all" element={<PaintsList />} />
           <Route path="/login" element={<LoginScreen />} />
-          <Route path="/edit/:id" element={<EditPaint />} />
+          <Route path="/update/:id" element={<EditPaint />} />
         </Routes>
       </AuthProvider>
     </Router>
