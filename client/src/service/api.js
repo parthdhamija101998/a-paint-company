@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const URL = "http://localhost:5000";
+const URL = "https://a-paint-company-is18.herokuapp.com";
 
 export const getPaints = async () => {
   try {

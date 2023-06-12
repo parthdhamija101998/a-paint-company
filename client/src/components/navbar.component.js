@@ -1,5 +1,5 @@
-import { AppBar, Toolbar, styled, Typography,Button } from "@mui/material";
-import { NavLink, Link } from "react-router-dom";
+import { AppBar, Toolbar, Typography,Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 import React, { useContext } from "react";
 import { AuthContext } from "./authContext";
