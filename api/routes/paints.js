@@ -48,4 +48,40 @@ router.put("/update/:id", async (req, res) => {
   }
 });
 
+router.put("/update/quantity/:id", async (req, res) => {
+  try {
+    const { quantity } = req.body;
+    const paint = await Paint.findById(req.params.id);
+    
+    if (!paint) {
+      return res.status(400).json({ error: "Paint not found" });
+    }
+
+    paint.quantity = quantity;
+
+    await paint.save();
+    res.json({ message: "Paint quantity updated successfully" });
+  } catch (error) {
+    res.status(400).json({ error: "Failed to update paint" });
+  }
+});
+
+router.put("/update/status/:id", async (req, res) => {
+  try {
+    const { status } = req.body;
+    const paint = await Paint.findById(req.params.id);
+    
+    if (!paint) {
+      return res.status(400).json({ error: "Paint not found" });
+    }
+
+    paint.status = status;
+
+    await paint.save();
+    res.json({ message: "Paint quantity updated successfully" });
+  } catch (error) {
+    res.status(400).json({ error: "Failed to update paint" });
+  }
+});
+
 module.exports = router;
