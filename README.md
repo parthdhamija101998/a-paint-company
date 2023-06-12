@@ -14,7 +14,7 @@ This is a ReadMe file for the Paint Company Stock Status web application, which 
 
 ## Deployment and Access - 
 
-The frontend of the project has been deployed using Netlify - https://taupe-rabanadas-d608da.netlify.app/login
+The frontend of the project has been deployed using Netlify - https://taupe-rabanadas-d608da.netlify.app/
 The backend of the project has been deployed using Heroku - https://a-paint-company-is18.herokuapp.com/paints
 
 Please find the table below for checking the functionality of the app you would be requiring these Login Credentials -
@@ -26,7 +26,7 @@ Please find the table below for checking the functionality of the app you would 
 * Username : John
 * Password : john
 
-1. Painter1 (Painter)
+3. Painter1 (Painter)
 * Username : painter1
 * Password : parth
 

@@ -13,7 +13,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = () => {
     setIsLoggedIn(false);
-    navigate("/login");
+    navigate("/");
   };
 
   return (

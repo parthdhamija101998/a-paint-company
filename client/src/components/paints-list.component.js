@@ -13,7 +13,11 @@ import {
   TextField,
 } from "@mui/material";
 import { Link, useLocation } from "react-router-dom";
-import { getPaints, updatePaintQuantity, updatePaintStatus } from "../service/api";
+import {
+  getPaints,
+  updatePaintQuantity,
+  updatePaintStatus,
+} from "../service/api";
 
 const PaintsList = () => {
   const location = useLocation();
@@ -72,10 +76,10 @@ const PaintsList = () => {
   const updateStatus = async (paintId) => {
     const updatedStatus = "Running Low";
     await updatePaintStatus(updatedStatus, paintId);
-    
+
     // Refresh the paints list
     getAllPaints();
-  }
+  };
 
   const swimLanes = {
     Available: [],
@@ -94,8 +98,11 @@ const PaintsList = () => {
   });
 
   return (
-    <div>
-      <Typography variant="h6" style={{ margin: "20px" }}>
+    <div style={{ background: "#F1FBEC" }}>
+      <Typography
+        variant="h6"
+        style={{ margin: "20px", display: "flex", float: "right" }}
+      >
         Logged in as {userRole}
       </Typography>
       <div style={{ width: "100%", display: "flex", justifyContent: "center" }}>
@@ -126,7 +133,7 @@ const PaintsList = () => {
               <Card
                 variant="outlined"
                 sx={{
-                  backgroundColor: "#C0D5D3",
+                  backgroundColor: "#C3E1C1",
                 }}
               >
                 <CardContent>
@@ -141,21 +148,29 @@ const PaintsList = () => {
                       variant="outlined"
                       sx={{
                         marginBottom: "10px",
-                        border: `5px solid ${paint.color}`,
+                        border: `10px solid ${paint.color}`,
                       }}
                     >
                       <CardContent>
-                        <Typography variant="h6" component="div">
-                          {paint.color}
+                        <Typography
+                          variant="h6"
+                          style={{ display: "flex", justifyContent: "right" }}
+                        >
+                          In Hand: {paint.quantity} L
                         </Typography>
-                        <Typography variant="body1">
-                          Quantity: {paint.quantity}
+                        <Typography
+                          variant="h5"
+                          component="div"
+                          style={{ display: "flex", justifyContent: "left" }}
+                        >
+                          {paint.color}
                         </Typography>
                       </CardContent>
                       {userRole === "Admin" ? (
                         <CardActions>
                           <Button
                             component={Link}
+                            variant="contained"
                             to={`/update/${paint._id}`}
                             style={{ marginLeft: "auto" }}
                           >
@@ -166,7 +181,10 @@ const PaintsList = () => {
                       <CardActions>
                         {userRole === "Painter" &&
                         paint.status !== "Out of Stock" ? (
-                          <Button onClick={() => handlePickUp(paint)}>
+                          <Button
+                            variant="contained"
+                            onClick={() => handlePickUp(paint)}
+                          >
                             Pick Up
                           </Button>
                         ) : null}

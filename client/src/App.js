@@ -3,7 +3,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Navigate,
 } from "react-router-dom";
 import { AuthProvider } from "./components/authContext";
 
@@ -18,9 +17,8 @@ function App() {
       <AuthProvider>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Navigate to="/login" />} />
+          <Route path="/" element={<LoginScreen />} />
           <Route path="/all" element={<PaintsList />} />
-          <Route path="/login" element={<LoginScreen />} />
           <Route path="/update/:id" element={<EditPaint />} />
         </Routes>
       </AuthProvider>
